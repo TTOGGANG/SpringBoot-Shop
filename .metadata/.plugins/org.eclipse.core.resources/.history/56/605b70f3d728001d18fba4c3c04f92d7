@@ -1,0 +1,11 @@
+package com.shop.entity;
+
+import org.springframework.boot.test.context.SpringBootTest;
+
+@SpringBootTest
+@Transactional
+@TestPropertySource(locations="classpath:application-test.properties")
+
+public class MemberTest {
+
+}

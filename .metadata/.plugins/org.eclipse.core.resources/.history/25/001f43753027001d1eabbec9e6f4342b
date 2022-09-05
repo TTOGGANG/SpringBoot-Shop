@@ -1,0 +1,15 @@
+//#DTO는 이동수단이다(필드를 가져가고 가져오는)
+
+package com.shop.dto;
+
+
+@Getter
+@Setter
+public class ItemDto {
+
+	private Long id;
+	private String itemNm;
+	private Integer price;
+	private String itemDetail;
+	private String sellStatCd;
+}

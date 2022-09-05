@@ -1,0 +1,8 @@
+package com.shop.service;
+
+@Service
+@Transactional
+@RequiredArgsConstructor
+public class OrderService {
+
+}

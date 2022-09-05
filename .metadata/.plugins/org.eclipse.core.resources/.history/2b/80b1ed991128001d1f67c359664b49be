@@ -1,0 +1,20 @@
+package com.shop.entity;
+
+
+@SpringBootTest
+@Transactional
+@TestPropertySource(locations="classpath:application-test.properties")
+public class CartTest {
+
+	@Autowired
+	CartRepository cartRepository;
+	
+	@Autowired
+	MemberRepository memberRepository;
+	
+	@Autowired
+	PasswordEncoder passwordEncoder;
+	
+	@PersistenceContext
+	
+}

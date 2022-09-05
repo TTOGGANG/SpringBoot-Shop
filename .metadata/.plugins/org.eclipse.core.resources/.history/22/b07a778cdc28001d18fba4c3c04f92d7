@@ -1,0 +1,9 @@
+package com.shop.dto;
+
+
+@Getter
+@Setter
+public class ItemFormDto {
+
+	private Long id;
+}

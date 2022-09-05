@@ -1,0 +1,16 @@
+package com.shop.entity;
+
+
+@Entity
+@Getter
+@Setter
+@Table(name="cart_item")
+public class CartItem {
+
+	@Id
+	@GeneratedValue
+	@Column(name="cart_item_id")
+	private Long id;
+	
+	@ManyToOne
+}

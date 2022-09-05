@@ -1,0 +1,74 @@
+package com.shop.entity;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import com.shop.constant.OrderStatus;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Entity
+@Table(name="orders")
+@Getter
+@Setter
+
+public class Order {
+	
+	@Id
+	@GeneratedValue
+	@Column(name="order_id")
+	private Long id;
+	
+	@ManyToOne
+	@JoinColumn(name="member_id")
+	private Member member;
+	
+	private LocalDateTime orderDate;//주문일
+	
+	@Enumerated(EnumType.STRING)
+	private OrderStatus orderStatus;//주문상태
+	
+//	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
+//	private List<OrderItem> orderItems = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<OrderItem> orderItems = new ArrayList<>();
+	
+	private LocalDateTime regTime;//주문 상품 엔티티와 일대다 매핑한다. 외래키가 있는 주문 상품이 연관관계의 주인이다.
+	private LocalDateTime updateTime;//하나의 주문에 여러개 주문상품을 갖기에 List 자료형 사용
+
+	public Order createOrder() {
+		Order order = new Order();
+		for(int i=0; i<3; i++) {
+			Item item = createItem();
+			itemRepository.save(item);
+			OrderItem orderItem = new OrderItem();
+			orderItem.setItem(item);
+			orderItem.setCount(10);
+			orderItem.setCount(10);
+			orderItem.setOrderPrice(1000);
+			orderItem.setOrder(order);
+			order.getOrderItems().add(orderItem);
+		}
+		Member member = new Member();
+		
+	}
+}
+
+
+
+

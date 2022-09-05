@@ -1,0 +1,7 @@
+package com.shop.repository;
+
+public interface MemberRepostiory extends JpaRepository<Member, Long> {
+	
+	Member findByEmail(String email);
+
+}

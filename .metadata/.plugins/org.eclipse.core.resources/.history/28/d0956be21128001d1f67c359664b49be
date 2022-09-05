@@ -1,0 +1,30 @@
+package com.shop.entity;
+
+import com.shop.dto.MemberFormDto;
+
+@SpringBootTest
+@Transactional
+@TestPropertySource(locations="classpath:application-test.properties")
+public class CartTest {
+
+	@Autowired
+	CartRepository cartRepository;
+	
+	@Autowired
+	MemberRepository memberRepository;
+	
+	@Autowired
+	PasswordEncoder passwordEncoder;
+	
+	@PersistenceContext
+	Entitymanager em;
+	
+	public Member createMember() {
+		MemberFormDto memberFormDto = new MemberFormDto();
+		memberFormDto.setEmail("test@email.com");
+		memberFormDto.setName("홍길동");
+		memberFormDto.setAddress("서울시 마포구 합정동");
+		memberFormDto.setPassword("1234");
+		return Member.createMember(memberFormDto, passwordEncoder);
+	}
+}

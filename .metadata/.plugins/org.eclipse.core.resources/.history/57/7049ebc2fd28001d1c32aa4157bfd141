@@ -1,0 +1,34 @@
+package com.shop.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import com.shop.dto.ItemFormDto;
+import com.shop.service.ItemService;
+
+@Controller
+public class ItemController {
+
+	private final ItemService itemService;
+	
+	@GetMapping(value="/admin/item/new")
+	public String itemForm() {
+		model.addAttribute("itemFormDto", new ItemFormDto());
+		return "item/itemForm";
+	}
+	
+	@PostMapping(value="/admin/item/new")
+	public String itemNew(@Valid ItemFormDto itemFormDto, BindingResult bindingResult,
+			Model model, @RequestParam("itemImgFile")List<MultipartFile>itemImgFileList){
+		
+		if(bindingResult.hasError()) {
+			return "item/itemForm";
+		}
+		
+		if(itemImgFileList.get(0).isEmpty()&&itemFormDto.getId()==null) {
+			model.addAttribute("errorMessage","첫번째 상품 이미지는 필수 입력 값 입니다.");
+			return"item/itemForm";
+		}
+		
+	} 
+}

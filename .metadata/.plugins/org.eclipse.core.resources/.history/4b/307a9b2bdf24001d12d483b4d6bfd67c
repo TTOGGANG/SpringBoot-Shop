@@ -1,0 +1,18 @@
+package com.shop.entity;
+
+
+@Getter
+@Setter
+@ToString
+public class item {
+
+	@Id
+	private Long id;
+	private String itemNm;
+	private int price;
+	private int stockNumber;
+	private String itemDetail;
+	private itemSellStatus itemSellStatus;
+	private LocalDateTime regTime;
+	private LocalDateTime updateTime;
+}

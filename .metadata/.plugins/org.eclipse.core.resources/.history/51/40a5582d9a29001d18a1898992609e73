@@ -1,0 +1,6 @@
+package com.shop.repository;
+
+public class ItemRepositoryCustom {
+	
+	Page<item>getAdminItemPage(ItemSearchDto itemSearchDto, pageable pageable);
+}

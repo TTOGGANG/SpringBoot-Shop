@@ -1,0 +1,23 @@
+package com.shop.service;
+
+@SpringBootTest
+@Transactional
+@TestPropertySource(locations="classpath:application-test.properties")
+public class OrderServiceTest {
+	
+	@Autowired
+	private OrderService orderService;
+	
+	@Autowired
+	private OrderRepository orderRepository;
+	
+	@Autowired
+	ItemRepository itemRepository;
+	
+	@Autowired
+	MemberRepository memberRepositroy;
+	
+	public Item saveItem() {
+		Item item = new Item();
+	}
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout1}">
+	
+<head>
+	<meta name="_csrf" th:content="${_csrf.token}"/>
+	<meta name="_csrf_header" th:content="${_csrf.headerName}">
+	<meta charset="UTF-8">
+<title>Title</title>
+</head>
+
+<!-- 사용자 스크립트 추가  -->
+	<th:block layout:fragment="script">
+	
+	<script th:inline="javascript">
+		function cancelOrder(orderId){
+			vartoken = $("meta[name='_csrf']").attr("content");
+			var header = $("meta[name='_csrf_header']").attr("content");
+			
+			var url = "/order/"+ orderId + "/cancel";
+			var paramData = {
+					orderId : orderId,		
+			};
+			
+			var param = JOSN.stringify(paramData);
+		}	
+	</script>
+
+<body>
+
+</body>
+</html>

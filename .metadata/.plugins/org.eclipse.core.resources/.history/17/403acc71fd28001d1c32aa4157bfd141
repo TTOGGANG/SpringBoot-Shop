@@ -1,0 +1,18 @@
+package com.shop.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import com.shop.service.ItemService;
+
+@Controller
+public class ItemController {
+
+	private final ItemService itemService;
+	
+	@GetMapping(value="/admin/item/new")
+	public String itemForm() {
+		model.addAttribute("itemFormDto", new ItemFormDto());
+		return "item/itemForm";
+	}
+}

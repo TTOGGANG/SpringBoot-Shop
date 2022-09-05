@@ -1,0 +1,10 @@
+package com.shop.repository;
+
+public class ItemRepositoryCustomImpl mplements ItemRepositoryCustom{
+	
+	private JPAQueryFactory queryFactory;
+	
+	public ItemRepositoryCustomImpl
+
+
+}
